@@ -1,45 +1,68 @@
 :root {
-  --main-color = white;
-  --padding = 5%;
-  --bg-color = #aaaa
+  --main-color: white;
+  --padding: 5%;
+  --bg-color: #aaaa;
 }
 
+/*VERSION MOBILE*/
+@media screen and (max-width: 576px) {
 
-.title {
+  header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  aside {
+    display: none;
+    width: 100%;
+  }
+
+  main {
+    width: 100%;
+    order: 1;
+    padding-right: 15%
+  }
+
+}.title {
   font-family: "Source Serif 4", serif;
   font-weight: 500;
   font-style: normal;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
+  font-family: sans-serif;
 }
 
 p {
   font-family: sans-serif;
+  text-align: justify;
 }
 
 header {
-    position: fixed;
-    margin-top: 0;
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-bottom: 10%;
     width: 100%;
     height: auto;
-    background: var(--bg-color);
+    background: var(--main-color);
     color: black;
     display: flex;
     align-items: center;
-    z-index: -1; /* je veux que mon header passe derrière mon texte en cas de conflit*/
 }
 
 /* Bar de navigation latérale gauche */
 nav {
     position: fixed;
     margin-top: 10% ;
-    margin-left: 5%;
     padding: 1%;
     width: 10%;
     height: auto;
@@ -59,14 +82,14 @@ nav div {
 .container {
   display : flex;
   flex-direction: row;
-  margin-top: 10%;
   margin-left: 15%;
   background-color: white;
   opacity: 1;
+  align-items: stretch;
 }
 
-main {
-  padding: 5%;
+main{
+  margin-right: 5%
 }
 
 .figcaption {
@@ -77,6 +100,7 @@ aside {
   border: 2px solid #ddd;
   border-radius: 4px;
   background-color: #f2f2f2;
+  max-width: 50%;
 }
 
 .h2_aside{
