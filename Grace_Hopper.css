@@ -65,6 +65,11 @@ nav div {
   padding-bottom: 2%;
 }
 
+nav a{
+  color: var(--false-hyperlink);
+
+}
+
 nav a:hover{
   color: darkred;
 }
