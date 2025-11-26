@@ -1,41 +1,13 @@
 :root {
   --main-color: white;
   --padding: 5%;
-  --bg-color: #aaaa;
+  --bg-color: #f1f1f1f1;
+  --title-color:#BFD7FF;
+  --false-hyperlink:#2968A3;
 }
 
-/*VERSION MOBILE*/
-@media screen and (max-width: 576px) {
-
-  header {
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-  }
-
-  nav {
-    display: none;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  aside {
-    display: none;
-    width: 100%;
-  }
-
-  main {
-    width: 100%;
-    order: 1;
-    padding-right: 15%
-  }
-
-}.title {
+/* VERSION CLASSIQUE */
+.title {
   font-family: "Source Serif 4", serif;
   font-weight: 500;
   font-style: normal;
@@ -50,6 +22,16 @@ p {
   text-align: justify;
 }
 
+/* petites classes pour mettre en forme le texte à la manière de wikipédia */
+.emph {
+  font-weight: bold;
+}
+
+/*Je sais faire des hyperliens, mais je n'allais pas refaire tous les hyprliens de la page*/
+.false-hyperlink{
+  color: var(--false-hyperlink);
+}
+
 header {
     width: 100%;
     height: auto;
@@ -60,6 +42,11 @@ header {
 }
 
 /* Bar de navigation latérale gauche */
+/* Vous aviez demandé que l'encare sur la gauche suive l'utilisateur,
+cependant ce n'est pas le cas sur wikipédia. Pour prouver que je sais le faire
+et conserver le design wikipédien, j'ai décidé de fixer la barre de 
+navigation plutôt que mon aside. Désolé si ça ne rentre pas à 100% dans 
+la consigne. */
 nav {
     position: fixed;
     margin-top: 10% ;
@@ -68,7 +55,7 @@ nav {
     height: auto;
     border: 2px solid #ddd;
     border-radius: 4px;
-    background-color: #f1f1f1f1;
+    background-color: var(--bg-color);
 }
 
 nav div {
@@ -76,6 +63,10 @@ nav div {
   padding-left: 5%;
   padding-right:5%;
   padding-bottom: 2%;
+}
+
+nav a:hover{
+  color: darkred;
 }
 
 /* Texte */
@@ -88,6 +79,9 @@ nav div {
   align-items: stretch;
 }
 
+
+/*Mon texte est dans l'élément main et mon enquare 
+est dans l'élément aside */
 main{
   margin-right: 5%
 }
@@ -99,12 +93,12 @@ main{
 aside {
   border: 2px solid #ddd;
   border-radius: 4px;
-  background-color: #f2f2f2;
+  background-color: var(--bg-color);
   max-width: 50%;
 }
 
 .h2_aside{
-  background-color: #BFD7FF;
+  background-color: var(--title-color);
   text-align: center;
   padding-top: 2%;
   padding-bottom: 2%;
@@ -113,22 +107,58 @@ aside {
 }
 
 .aside_bio {
-  background-color: #BFD7FF;
+  background-color: var(--title-color);
   text-align: center;
   margin-left: 5%;
   margin-right: 5%;
 }
 
+
+/* J'ai tenté de faire un truc stylé ici quand l'on clique la photo,
+dans l'encare, ça fonctionne, mais malheureusement, ça ne rend pas dingus.*/
 .img_aside {
   border: 2px solid #ddd;
   border-radius: 4px;
   padding: 5px;
   width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  opacity: 1;
+  display: block;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+
 }
 
-.img_aside:hover {
+.figure_aside:hover .image_aside{
+  opacity: 0.3;
   box-shadow: 0 0 2px 2px rgba(0, 140, 186, 0.5);
+  justify-content: center;
 }
+
+.figure_aside:hover .middle {
+  opacity: 1;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: inherit;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text {
+  background-color: var(--main-color);
+  color: black;
+  font-size: 16px;
+  padding: 16px 32px;
+  text-align: center;
+}
+
+/*Fin des expériences avec l'encare et l'appariton de texte*/
 
 .ul_aside {
  padding-top: 2%;
@@ -144,7 +174,7 @@ ul li{
 
 hr {
   height: 1px;
-  color: #f1f1f1f1;
+  color: var(--bg-color);
 }
 
 .input_header {
@@ -152,3 +182,40 @@ hr {
 }
 
 
+/*VERSION MOBILE*/
+/* J'ai eu beaucoup de problème car 
+je mettais la media query avant mon code
+par souci de lisibilité, et en fait il faut le mettre à la fin*/
+@media screen and (max-width: 800px) {
+
+  header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: center;
+  }
+
+  aside {
+    max-width: 100%;
+    order: 0;
+  }
+
+  main {
+    width: 100%;
+    order: 1;
+    padding-right: 15%
+  }
+
+}
